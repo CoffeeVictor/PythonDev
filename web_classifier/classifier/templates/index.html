@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classifier</title>
+</head>
+<body>
+    <h4>Upload do arquivo</h4>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{form.knn}} {{form.knn.label}}</p>
+        <p>{{form.svm}} {{form.svm.label}}</p>
+        <p>{{form.tree}} {{form.tree.label}}</p>
+        <p>{{form.data.label}}</p>
+        <p>{{form.data}} <input type="submit" value="Upload"/></p>
+    </form>
+
+    {% if image_path %}
+        <p>Results:</p>
+        <p>
+            {% load static %}
+            {% static "" as baseUrl %}
+            <img src="{{ baseUrl }}classifier/{{image_path}}"></img>
+        </p>
+    {% endif %}
+
+</body>
+</html>
